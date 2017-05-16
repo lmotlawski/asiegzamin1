@@ -57,15 +57,7 @@
 
 <p>
   <strong>Category:</strong>
-    <% tmp = @weapon.category_id
-		if Category.exists?(tmp)
-			category = Category.find(tmp)
-			categoryName = category.name
-	   else
-			categoryName = 'BRAK'
-	end
-	%>
-  <%= categoryName %>
+  <%= @weapon.category_id %>
 </p>
 
 <p>
