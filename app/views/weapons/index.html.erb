@@ -65,19 +65,10 @@
 
   <tbody>
   
-	<%= paginate @weapons %>
-    <% @weapons.each do |weapon| %>
-    <% tmp = weapon.category_id
-		if Category.exists?(tmp)
-			category = Category.find(tmp)
-			categoryName = category.name
-	   else
-			categoryName = 'BRAK'
-	end
-	%>
+
       <tr>
         <td><%= weapon.name %></td>
-        <td><%= categoryName %></td>
+        <td><%= weapon.category_id %></td>
         <td><%= weapon.caliber %></td>
         <td><%= markdown weapon.description %></td>
         <td><%= link_to 'Show', weapon %></td>
