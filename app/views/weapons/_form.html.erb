@@ -1,0 +1,39 @@
+<%= form_for(@weapon) do |f| %>
+			<%= form_with(model: weapon, local: true) do |form| %>
+  <% if weapon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(weapon.errors.count, "error") %> prohibited this weapon from being saved:</h2>
+
+      <ul>
+      <% weapon.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :weapon_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :category_id %><br>
+    <%= collection_select(:weapon, :category_id, @categories, :id, :name, {:prompt => false}) %> 
+  </div>
+
+  <div class="field">
+    <%= form.label :caliber %>
+    <%= form.text_field :caliber, id: :weapon_caliber %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :weapon_description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+<% end %>
